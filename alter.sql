@@ -70,7 +70,7 @@ GROUP BY ranger.name;
 SELECT common_name
 FROM species
 WHERE species_id NOT IN (
-  SELECT DISTINCT species_id FROM sightings
+SELECT DISTINCT species_id FROM sightings
 );
 
 --problem 6
@@ -88,15 +88,15 @@ WHERE discovery_date < '1800-01-01';
 
 --problem 8
 SELECT sighting_id,
-  CASE
-    WHEN EXTRACT(HOUR FROM sighting_time) < 12 THEN 'Morning'
-    WHEN EXTRACT(HOUR FROM sighting_time) < 17 THEN 'Afternoon'
-    ELSE 'Evening'
-  END AS time_of_day
+CASE
+WHEN EXTRACT(HOUR FROM sighting_time) < 12 THEN 'Morning'
+WHEN EXTRACT(HOUR FROM sighting_time) < 17 THEN 'Afternoon'
+ELSE 'Evening'
+END AS time_of_day
 FROM sightings;
 
 --problem 9
 DELETE FROM ranger
 WHERE ranger_id NOT IN (
-  SELECT DISTINCT ranger_id FROM sightings
+SELECT DISTINCT ranger_id FROM sightings
 );
